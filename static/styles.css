@@ -177,3 +177,4 @@ body{
   .third{ grid-column: 4 / span 3; }
   .marquee{ height: 120px; }
 }
+.team-score { display: none !important; }
