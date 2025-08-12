@@ -104,29 +104,28 @@ body{
 }
 
 /* Diamond/Gold/Silver borders using layered backgrounds (keeps rounded corners) */
+/* #1 = GOLD, #2 & #3 = WHITE */
 .first{
-  grid-column: 2 / span 4; min-height:240px;
-  border:3px solid transparent;
-  background:
-    linear-gradient(#121733,#121733) padding-box,
-    conic-gradient(from 0deg,
-      var(--diamond1), var(--diamond2), var(--diamond3), var(--diamond2), var(--diamond1)
-    ) border-box;
-}
-.second{
-  grid-column: 1 / span 3;
-  border:3px solid transparent;
+  grid-column: 2 / span 4;
+  min-height: 240px;
+  border: 3px solid transparent;
   background:
     linear-gradient(#121733,#121733) padding-box,
     linear-gradient(135deg,var(--gold1),var(--gold2),var(--gold3)) border-box;
 }
+
+.second{
+  grid-column: 1 / span 3;
+  border: 3px solid #ffffff;
+  background: var(--card);
+}
+
 .third{
   grid-column: 4 / span 3;
-  border:3px solid transparent;
-  background:
-    linear-gradient(#121733,#121733) padding-box,
-    linear-gradient(135deg,var(--silver1),var(--silver2),var(--silver3)) border-box;
+  border: 3px solid #ffffff;
+  background: var(--card);
 }
+
 
 .slot .ribbon{
   position:absolute; top:12px; left:12px; font-weight:900; opacity:.9;
