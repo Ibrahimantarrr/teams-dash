@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Manage Teams</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Admin – Manage Teams</h1>
+      <nav>
+        <a class="link" href="/">View Public Dashboard</a>
+      </nav>
+    </header>
+
+    <section class="card">
+      <h2>Add / Update Score</h2>
+      <form id="scoreForm" class="form">
+        <div class="field">
+          <label for="team_name">Team Name</label>
+          <input id="team_name" name="team_name" type="text" placeholder="Team Alpha" required />
+        </div>
+        <div class="field">
+          <label for="score">Score</label>
+          <input id="score" name="score" type="number" step="1" min="0" value="0" required />
+        </div>
+        <div class="actions">
+          <button type="submit">Save</button>
+          <button id="clearAll" type="button" class="danger">Clear All</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>All Teams</h2>
+      <table class="table" id="teamsTable">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody id="teamsBody">
+          <!-- rows injected here -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="./admin.js"></script>
+</body>
+</html>

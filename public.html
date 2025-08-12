@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top 3 Teams</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Top 3 Teams</h1>
+      <div class="timer" id="timer" aria-live="polite">Loading…</div>
+    </header>
+    <main>
+      <table class="table" id="topTable" aria-describedby="table-caption">
+        <caption id="table-caption">Live leaderboard (top 3)</caption>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Team</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="topBody">
+          <!-- rows injected here -->
+        </tbody>
+      </table>
+    </main>
+    <footer class="footer">
+      <small>Auto-refreshes every 5 seconds. Add "?reset" to the URL to reset the 6h timer on this device.</small>
+    </footer>
+  </div>
+  <script src="./public.js"></script>
+</body>
+</html>
