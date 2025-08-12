@@ -32,13 +32,10 @@
     try {
       const res = await fetch(`${API_BASE}/api/top-teams`, { cache: "no-store" });
       const data = await res.json();
-      // Fill with defaults in case we have <3 teams
       for (let r = 1; r <= 3; r++) {
         const row = data[r-1];
-        const name = row ? row.team_name : '—';
-        const score = row ? row.score : 0;
-        els[r].name.textContent = name;
-        els[r].score.textContent = score;
+        els[r].name.textContent = row ? row.team_name : '—';
+        els[r].score.textContent = row ? row.score : 0;
       }
     } catch (e) {
       console.error('Failed to fetch top teams', e);
@@ -46,32 +43,57 @@
   }
   fetchTop3(); setInterval(fetchTop3, 5000);
 
-  /* ---------- Sponsors marquee ---------- */
-  // 1) Put your sponsor logo files in: static/sponsors/
-  // 2) List them here (filenames only). Example placeholders:
+  /* ---------- Sponsors marquee (bigger + seamless loop) ---------- */
+  // 1) Put your sponsor images in: static/sponsors/
+  // 2) List the filenames below:
   const SPONSOR_LOGOS = [
     "sponsors/logo1.png",
     "sponsors/logo2.png",
     "sponsors/logo3.png",
     "sponsors/logo4.png"
   ];
+
+  const marquee = document.getElementById('marquee');
   const track = document.getElementById('sponsorTrack');
   const clone = document.getElementById('sponsorTrackClone');
 
-  function buildTrack(intoEl) {
-    intoEl.innerHTML = '';
-    SPONSOR_LOGOS.forEach(src => {
-      const wrap = document.createElement('div');
-      wrap.className = 'sponsor';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = 'Sponsor logo';
-      wrap.appendChild(img);
-      intoEl.appendChild(wrap);
-    });
+  function makeTile(src){
+    const wrap = document.createElement('div');
+    wrap.className = 'sponsor';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Sponsor logo';
+    wrap.appendChild(img);
+    return wrap;
   }
-  if (track && clone) {
-    buildTrack(track);
-    buildTrack(clone);
+
+  async function buildMarquee() {
+    if (!marquee || !track || !clone) return;
+
+    // Build base content
+    track.innerHTML = '';
+    SPONSOR_LOGOS.forEach(src => track.appendChild(makeTile(src)));
+
+    // Duplicate until track width is at least viewport*2 (so it loops without gaps)
+    await new Promise(r => requestAnimationFrame(r)); // allow layout
+    const vw = marquee.clientWidth || window.innerWidth;
+    while (track.scrollWidth < vw * 2) {
+      SPONSOR_LOGOS.forEach(src => track.appendChild(makeTile(src)));
+    }
+
+    // Clone track for continuous scroll
+    clone.innerHTML = track.innerHTML;
+
+    // Set animation duration based on content width (px/sec speed)
+    const speed = 120; // px per second (tweak to taste)
+    const duration = Math.max(18, Math.round(track.scrollWidth / speed));
+    marquee.style.setProperty('--marquee-duration', `${duration}s`);
   }
+
+  window.addEventListener('load', buildMarquee);
+  window.addEventListener('resize', () => {
+    // Rebuild on resize to maintain loop
+    clearTimeout(window.__mq);
+    window.__mq = setTimeout(buildMarquee, 250);
+  });
 })();
