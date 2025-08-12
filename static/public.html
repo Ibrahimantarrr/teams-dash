@@ -8,29 +8,55 @@
 </head>
 <body>
   <div class="container">
-    <header class="header">
-      <h1>Top 3 Teams</h1>
-      <div class="timer" id="timer" aria-live="polite">Loading…</div>
+
+    <!-- Brand / Header -->
+    <header class="brand">
+      <img class="brand-logo" src="./logo.png" alt="Event logo" onerror="this.style.display='none'">
+      <div class="brand-right">
+        <div class="timer" id="timer" aria-live="polite">Loading…</div>
+        <nav><a class="link" href="/admin" title="Admin">Admin</a></nav>
+      </div>
     </header>
-    <main>
-      <table class="table" id="topTable" aria-describedby="table-caption">
-        <caption id="table-caption">Live leaderboard (top 3)</caption>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Team</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody id="topBody">
-          <!-- rows injected here -->
-        </tbody>
-      </table>
+
+    <!-- Podium layout -->
+    <main class="podium">
+      <!-- #1 big centered -->
+      <section class="slot first" id="first">
+        <div class="ribbon">#1</div>
+        <div class="team-name" id="first-name">—</div>
+        <div class="team-score" id="first-score">0</div>
+      </section>
+
+      <!-- #2 left -->
+      <section class="slot second" id="second">
+        <div class="ribbon">#2</div>
+        <div class="team-name" id="second-name">—</div>
+        <div class="team-score" id="second-score">0</div>
+      </section>
+
+      <!-- #3 right -->
+      <section class="slot third" id="third">
+        <div class="ribbon">#3</div>
+        <div class="team-name" id="third-name">—</div>
+        <div class="team-score" id="third-score">0</div>
+      </section>
     </main>
+
+    <!-- Sponsors marquee -->
+    <section class="sponsors">
+      <h2 class="sponsors-title">Sponsors</h2>
+      <div class="marquee" aria-label="Sponsors logos">
+        <div class="track" id="sponsorTrack"></div>
+        <div class="track clone" id="sponsorTrackClone" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Footer tag line -->
     <footer class="footer">
-      <small>Auto-refreshes every 5 seconds. Add "?reset" to the URL to reset the 6h timer on this device.</small>
+      <small>Powered by Saila One Group</small>
     </footer>
   </div>
+
   <script src="./public.js"></script>
 </body>
 </html>
