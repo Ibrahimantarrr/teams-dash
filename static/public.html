@@ -9,32 +9,26 @@
 <body>
   <div class="container">
 
-    <!-- Brand / Header -->
-    <header class="brand">
+    <!-- Brand / centered logo -->
+    <header class="brand brand--center">
       <img class="brand-logo" src="./logo.png" alt="Event logo" onerror="this.style.display='none'">
-      <div class="brand-right">
-        <div class="timer" id="timer" aria-live="polite">Loading…</div>
-        <nav><a class="link" href="/admin" title="Admin">Admin</a></nav>
-      </div>
+      <div class="timer" id="timer" aria-live="polite">Loading…</div>
     </header>
 
     <!-- Podium layout -->
     <main class="podium">
-      <!-- #1 big centered -->
       <section class="slot first" id="first">
         <div class="ribbon">#1</div>
         <div class="team-name" id="first-name">—</div>
         <div class="team-score" id="first-score">0</div>
       </section>
 
-      <!-- #2 left -->
       <section class="slot second" id="second">
         <div class="ribbon">#2</div>
         <div class="team-name" id="second-name">—</div>
         <div class="team-score" id="second-score">0</div>
       </section>
 
-      <!-- #3 right -->
       <section class="slot third" id="third">
         <div class="ribbon">#3</div>
         <div class="team-name" id="third-name">—</div>
@@ -45,7 +39,7 @@
     <!-- Sponsors marquee -->
     <section class="sponsors">
       <h2 class="sponsors-title">Sponsors</h2>
-      <div class="marquee" aria-label="Sponsors logos">
+      <div class="marquee" id="marquee" aria-label="Sponsors logos">
         <div class="track" id="sponsorTrack"></div>
         <div class="track clone" id="sponsorTrackClone" aria-hidden="true"></div>
       </div>
@@ -53,7 +47,7 @@
 
     <!-- Footer tag line -->
     <footer class="footer">
-      <small>Powered by Saila One Group</small>
+      <small>Powered by Saida One Group</small>
     </footer>
   </div>
 
