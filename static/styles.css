@@ -1,3 +1,62 @@
+/* ===== Admin dashboard styles (restore) ===== */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin: 14px 0;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { color: var(--muted); font-weight: 600; }
+.field input {
+  padding: 12px 14px;
+  background: #0e1430;
+  border: 1px solid rgba(255,255,255,.08);
+  color: var(--text);
+  border-radius: 12px;
+}
+
+.actions { display: flex; gap: 10px; align-items: center; }
+
+button {
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+button.danger { background: var(--danger); }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.table th, .table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.table th { color: var(--muted); font-weight: 600; }
+.table tr:last-child td { border-bottom: none; }
+
+/* Headline spacing for admin */
+.container > .header h1,
+.container h2 { margin: 0 0 12px 0; }
+
 :root{
   --bg:#0b1020; --card:#121733; --text:#e6e9ff; --muted:#aab2d5;
   --accent:#7c9cff; --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35);
